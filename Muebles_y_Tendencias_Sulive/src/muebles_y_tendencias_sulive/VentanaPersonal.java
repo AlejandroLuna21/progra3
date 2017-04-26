@@ -13,7 +13,6 @@ import Paneles.PersonalEliminar;
 import Paneles.PersonalGuardar;
 import Paneles.PersonalModificar;
 import javax.swing.JFrame;
-
 import javax.swing.JTabbedPane;
 //import javax.swing.JLabel;
 //import javax.swing.JTextField;
@@ -38,7 +37,7 @@ public class VentanaPersonal extends JFrame{
 
     private void configurarVentana() {
         this.setTitle("PERSONAL DE LA EMPRESA");
-        this.setSize(600, 400);
+        this.setSize(700, 500);
         this.setLocationRelativeTo(null);
 //        this.setLayout(null);    no permite mostrar las pestanas, no se por que???
         this.setResizable(false);

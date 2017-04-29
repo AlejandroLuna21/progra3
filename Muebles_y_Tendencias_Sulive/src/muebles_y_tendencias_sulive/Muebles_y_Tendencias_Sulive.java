@@ -26,8 +26,11 @@ public class Muebles_y_Tendencias_Sulive {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        VentanaPersonal v1 = new VentanaPersonal();
-        v1.setVisible(true);
+//        VentanaPersonal v1 = new VentanaPersonal();
+//        v1.setVisible(true);
+        
+        MenuPrincipal v2 = new MenuPrincipal();
+        v2.setVisible(true);
     }
     
 }

@@ -38,5 +38,8 @@ public final class Conexion {
             System.out.println("Error al conectar" + e);
         }
     }
+    public Connection getConnection(){
+        return conn;
+    }
 
 }

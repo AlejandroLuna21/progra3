@@ -6,12 +6,8 @@
 package muebles_y_tendencias_sulive;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import static javafx.scene.text.Font.font;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -52,7 +48,7 @@ public class MenuPrincipal extends JFrame implements ActionListener {
     private void configurarVentana() {
         this.setTitle("MUEBLES Y TENDENCIAS SULIVE");
 //        this.setFont(new Font( "Helvetica", Font.BOLD, 40));
-        this.setSize(1000, 700);
+        this.setSize(1720, 880);
         this.setLocationRelativeTo(null);
         this.setLayout(null);
         this.setResizable(false);
@@ -75,7 +71,7 @@ public class MenuPrincipal extends JFrame implements ActionListener {
         mOpciones.add(miCerrarSecion);
         mbPrincipal.add(mOpciones);
 
-        mRPersona = new JMenu("Registrar Personas");
+        mRPersona = new JMenu("Registrar Informacion");
         miPersonal = new JMenuItem("Registrar Personal");
         miPersonal.add(new JSeparator());
         miPersonal.addActionListener(this);

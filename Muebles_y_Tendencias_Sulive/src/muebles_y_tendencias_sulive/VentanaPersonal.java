@@ -5,18 +5,13 @@
  */
 package muebles_y_tendencias_sulive;
 
-//import java.awt.event.ActionEvent;
-//import java.awt.event.ActionListener;
-//import javax.swing.JButton;
-//import javax.swing.JComboBox;
+
 import Paneles.PersonalEliminar;
 import Paneles.PersonalGuardar;
 import Paneles.PersonalModificar;
-import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JTabbedPane;
-//import javax.swing.JLabel;
-//import javax.swing.JTextField;
+
 
 /**
  *
@@ -38,13 +33,13 @@ public class VentanaPersonal extends JInternalFrame {
     
     private void configurarVentana() {
         this.setTitle("PERSONAL DE LA EMPRESA");
-        this.setSize(700, 500);
+        this.setSize(900, 700);
 //        this.setLocationRelativeTo(null);
 //        this.setLayout(null);    //no permite mostrar las pestanas, no se por que???
 
-        this.setLocation(145, 70);
+        this.setLocation(400, 60);
         this.setClosable(true);
-        this.setMaximizable(true);
+//        this.setMaximizable(true);
         this.setResizable(false);
 //        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }

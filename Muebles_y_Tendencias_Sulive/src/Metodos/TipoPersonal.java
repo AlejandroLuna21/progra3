@@ -14,8 +14,16 @@ public class TipoPersonal {
     private int idTipoPersonal;
     private String tipoPersonal;
     
-    public TipoPersonal(){
+     public TipoPersonal(){
         
+    }
+
+    public void setIdTipPer(int idTipoPersonal) {
+        this.idTipoPersonal = idTipoPersonal;
+    }
+
+    public void setTipPer(String tipoPersonal) {
+        this.tipoPersonal = tipoPersonal;
     }
     
     public int getIdTipPer(){

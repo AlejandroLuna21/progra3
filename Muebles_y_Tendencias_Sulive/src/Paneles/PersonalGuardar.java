@@ -12,6 +12,10 @@ import java.awt.Color;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Calendar;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -20,6 +24,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import muebles_y_tendencias_sulive.Conexion;
 
 /**
  *
@@ -65,7 +70,7 @@ public class PersonalGuardar extends JPanel implements ActionListener {
 
     private JTextField txtSueldo;
     private JDateChooser dcInicio;
-    private JDateChooser dcFin;
+//    private JDateChooser dcFin;
 
     private JButton btnGuardar;
     private JButton btnCancelar;
@@ -80,156 +85,148 @@ public class PersonalGuardar extends JPanel implements ActionListener {
     public PersonalGuardar() {
         configurarPanel();
         inicializarComponentes();
+
     }
 
     private void configurarPanel() {
         this.setLayout(null);
-        this.setBackground(Color.GRAY);
+        this.setBackground(Color.lightGray);
     }
 
     private void inicializarComponentes() {
 
         lblDPersonales = new JLabel();
         lblDPersonales.setText("DATOS PERSONALES:");
-        lblDPersonales.setBounds(30, 20, 130, 25);
+        lblDPersonales.setBounds(600, 20, 130, 25);
         this.add(lblDPersonales);
         lblIdPersonal = new JLabel();
         lblIdPersonal.setText("Id Personal:");
-        lblIdPersonal.setBounds(50, 50, 90, 25);
+        lblIdPersonal.setBounds(650, 45, 90, 25);
         this.add(lblIdPersonal);
         lblNombre = new JLabel();
         lblNombre.setText("Nombre:");
-        lblNombre.setBounds(50, 80, 90, 25);
+        lblNombre.setBounds(650, 90, 90, 25);
         this.add(lblNombre);
         lblApellidoPaterno = new JLabel();
         lblApellidoPaterno.setText("Apellido Paterno:");
-        lblApellidoPaterno.setBounds(50, 110, 120, 25);
+        lblApellidoPaterno.setBounds(650, 135, 120, 25);
         this.add(lblApellidoPaterno);
         lblApellidoMaterno = new JLabel();
         lblApellidoMaterno.setText("Apellido Materno:");
-        lblApellidoMaterno.setBounds(50, 140, 120, 25);
+        lblApellidoMaterno.setBounds(650, 180, 120, 25);
         this.add(lblApellidoMaterno);
         lblNacimiento = new JLabel();
         lblNacimiento.setText("Fecha de Nacimiento:");
-        lblNacimiento.setBounds(50, 170, 130, 25);
+        lblNacimiento.setBounds(650, 225, 130, 25);
         this.add(lblNacimiento);
         lblCi = new JLabel();
         lblCi.setText("Celula de Indentidad");
-        lblCi.setBounds(50, 200, 120, 25);
+        lblCi.setBounds(650, 270, 120, 25);
         this.add(lblCi);
         lblDireccion = new JLabel();
         lblDireccion.setText("Direccion:");
-        lblDireccion.setBounds(50, 270, 90, 25);
+        lblDireccion.setBounds(650, 330, 90, 25);
         this.add(lblDireccion);
         lblAoC = new JLabel();
         lblAoC.setText("Avenida o Calle:");
-        lblAoC.setBounds(200, 230, 90, 25);
+        lblAoC.setBounds(800, 300, 90, 25);
         this.add(lblAoC);
         lblAoCC = new JLabel();
         lblAoCC.setText("Avenidas o Calles colindantes:");
-        lblAoCC.setBounds(370, 230, 180, 25);
+        lblAoCC.setBounds(1020, 300, 180, 25);
         this.add(lblAoCC);
         lblND = new JLabel();
         lblND.setText("Numero de domicilio:");
-        lblND.setBounds(200, 280, 120, 25);
+        lblND.setBounds(800, 360, 120, 25);
         this.add(lblND);
-//        lblZona = new JLabel();
-//        lblZona.setText("Zona:");
-//        lblZona.setBounds(370, 280, 120, 25);
-//        this.add(lblZona);
         lblTelefono = new JLabel();
         lblTelefono.setText("Telefono:");
-        lblTelefono.setBounds(50, 340, 90, 25);
+        lblTelefono.setBounds(650, 430, 90, 25);
         this.add(lblTelefono);
         lblEmail = new JLabel();
         lblEmail.setText("Email:");
-        lblEmail.setBounds(50, 370, 90, 25);
+        lblEmail.setBounds(650, 475, 90, 25);
         this.add(lblEmail);
         lblDLaborales = new JLabel();
         lblDLaborales.setText("DATOS LABORALES:");
-        lblDLaborales.setBounds(30, 410, 120, 25);
+        lblDLaborales.setBounds(600, 530, 120, 25);
         this.add(lblDLaborales);
         lblTipoPersonal = new JLabel();
         lblTipoPersonal.setText("Tipo de  Personal:");
-        lblTipoPersonal.setBounds(50, 440, 120, 25);
+        lblTipoPersonal.setBounds(650, 565, 120, 25);
         this.add(lblTipoPersonal);
         lblSueldo = new JLabel();
         lblSueldo.setText("Sueldo:");
-        lblSueldo.setBounds(50, 490, 90, 25);
+        lblSueldo.setBounds(650, 620, 90, 25);
         this.add(lblSueldo);
         lblFechaInicio = new JLabel();
         lblFechaInicio.setText("Inicio de Actividades:");
-        lblFechaInicio.setBounds(50, 520, 120, 25);
+        lblFechaInicio.setBounds(650, 665, 120, 25);
         this.add(lblFechaInicio);
         lblFechaFin = new JLabel();
-        lblFechaFin.setText("Fin de Actividades:");
-        lblFechaFin.setBounds(50, 550, 120, 25);
-        this.add(lblFechaFin);
-
+//        lblFechaFin.setText("Fin de Actividades:");
+//        lblFechaFin.setBounds(650, 550, 120, 25);
+//        this.add(lblFechaFin);
+//
         txtIdPersonal = new JTextField();
-        txtIdPersonal.setBounds(200, 50, 150, 25);
+        txtIdPersonal.setBounds(800, 45, 200, 25);
         this.add(txtIdPersonal);
         txtNombre = new JTextField();
-        txtNombre.setBounds(200, 80, 150, 25);
+        txtNombre.setBounds(800, 90, 200, 25);
         this.add(txtNombre);
         txtApellidoPaterno = new JTextField();
-        txtApellidoPaterno.setBounds(200, 110, 150, 25);
+        txtApellidoPaterno.setBounds(800, 135, 200, 25);
         this.add(txtApellidoPaterno);
         txtApellidoMaterno = new JTextField();
-        txtApellidoMaterno.setBounds(200, 140, 150, 25);
+        txtApellidoMaterno.setBounds(800, 180, 200, 25);
         this.add(txtApellidoMaterno);
         dcNacimiento = new JDateChooser();
-        dcNacimiento.setBounds(200, 170, 150, 25);
+        dcNacimiento.setBounds(800, 225, 200, 25);
         this.add(dcNacimiento);
         txtCi = new JTextField();
-        txtCi.setBounds(200, 200, 150, 25);
+        txtCi.setBounds(800, 270, 200, 25);
         this.add(txtCi);
         txtAoC = new JTextField();
-        txtAoC.setBounds(200, 250, 150, 25);
+        txtAoC.setBounds(800, 320, 200, 25);
         this.add(txtAoC);
         txtAoCC = new JTextField();
-        txtAoCC.setBounds(370, 250, 150, 25);
+        txtAoCC.setBounds(1020, 320, 200, 25);
         this.add(txtAoCC);
         txtND = new JTextField();
-        txtND.setBounds(200, 300, 150, 25);
+        txtND.setBounds(800, 380, 200, 25);
         this.add(txtND);
-//        txtZona = new JTextField();
-//        txtZona.setBounds(370, 300, 150, 25);
-//        this.add(txtZona);
         txtTelefono = new JTextField();
-        txtTelefono.setBounds(200, 340, 150, 25);
+        txtTelefono.setBounds(800, 430, 200, 25);
         this.add(txtTelefono);
         txtEmail = new JTextField();
-        txtEmail.setBounds(200, 370, 150, 25);
+        txtEmail.setBounds(800, 475, 200, 25);
         this.add(txtEmail);
         cbxCargo = new JComboBox();
-        cbxCargo.setBounds(200, 440, 150, 40);
+        cbxCargo.setBounds(800, 565, 200, 40);
         cbxCargo.setBorder(BorderFactory.createTitledBorder("Seleccione una Opcion:"));
-//        cbxCargo.addItem("Seleccione Opcion");
-        cbxCargo.addItem("Administrador");
-        cbxCargo.addItem("Secretaria");
-        cbxCargo.addItem("Disenador");
-        cbxCargo.addItem("Acomodador");
+        setDatosCbx();
+        cbxCargo.setSelectedItem(null);
         this.add(cbxCargo);
         txtSueldo = new JTextField();
-        txtSueldo.setBounds(200, 490, 150, 25);
+        txtSueldo.setBounds(800, 620, 200, 25);
         this.add(txtSueldo);
         dcInicio = new JDateChooser();
-        dcInicio.setBounds(200, 520, 150, 25);
+        dcInicio.setBounds(800, 665, 200, 25);
+        dcInicio.setDateFormatString("yyyy-MM-dd");
         this.add(dcInicio);
-        dcFin = new JDateChooser();
-        dcFin.setBounds(200, 550, 150, 25);
-//        dcFin.setDateFormatString("yyyy-MM-dd");
-        this.add(dcFin);
-
+//        dcFin = new JDateChooser();
+//        dcFin.setBounds(800, 550, 150, 25);
+//////        dcFin.setDateFormatString("yyyy-MM-dd");
+//        this.add(dcFin);
+//
         btnGuardar = new JButton();
         btnGuardar.setText("GUARDAR");
-        btnGuardar.setBounds(450, 505, 100, 50);
+        btnGuardar.setBounds(600, 800, 200, 100);
         btnGuardar.addActionListener(this);
         this.add(btnGuardar);
         btnCancelar = new JButton();
         btnCancelar.setText("CANCELAR");
-        btnCancelar.setBounds(600, 505, 100, 50);
+        btnCancelar.setBounds(900, 800, 200, 100);
         btnCancelar.addActionListener(this);
         this.add(btnCancelar);
     }
@@ -254,10 +251,10 @@ public class PersonalGuardar extends JPanel implements ActionListener {
         mes = dcInicio.getCalendar().get(Calendar.MONTH);
         dia = dcInicio.getCalendar().get(Calendar.DAY_OF_MONTH);
         p1.setFI(anio + "-" + (mes + 1) + "-" + dia);
-        anio = dcFin.getCalendar().get(Calendar.YEAR);
-        mes = dcFin.getCalendar().get(Calendar.MONTH);
-        dia = dcFin.getCalendar().get(Calendar.DAY_OF_MONTH);
-        p1.setFF(anio+"-"+(mes+1)+"-"+dia);
+//        anio = dcFin.getCalendar().get(Calendar.YEAR);
+//        mes = dcFin.getCalendar().get(Calendar.MONTH);
+//        dia = dcFin.getCalendar().get(Calendar.DAY_OF_MONTH);
+//        p1.setFF(anio + "-" + (mes + 1) + "-" + dia);
         p1.setIdTipPer((cbxCargo.getSelectedIndex() + 1));//Pendiente
         try {
             mP1.setDate(p1);
@@ -268,10 +265,46 @@ public class PersonalGuardar extends JPanel implements ActionListener {
 
     }
 
+    public void setDatosCbx() {
+        try {
+            Conexion cn = new Conexion();
+            Connection conn = cn.getConnection();
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT * FROM tipo_personal");
+            while(rs.next()){
+                
+                cbxCargo.addItem(rs.getString(2));
+            }
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error" + e);
+        }
+    }
+    public void clearComponentes(){
+    txtIdPersonal.setText("");
+    txtNombre.setText("");
+    txtApellidoPaterno.setText("");
+    txtApellidoMaterno.setText("");
+    dcNacimiento.setCalendar(null);
+    txtCi.setText("");
+    txtAoC.setText("");
+    txtAoCC.setText("");
+    txtND.setText("");
+    txtTelefono.setText("");
+    txtEmail.setText("");
+    cbxCargo.setSelectedItem(null);
+    txtSueldo.setText("");
+    dcInicio.setCalendar(null);
+    }
+
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == btnGuardar) {
             getDatos();
+            clearComponentes();
+        }
+        if (ae.getSource() == btnCancelar){
+            clearComponentes();
         }
     }
 }

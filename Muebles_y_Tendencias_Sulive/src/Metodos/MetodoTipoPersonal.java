@@ -5,10 +5,48 @@
  */
 package Metodos;
 
+import Paneles.PersonalGuardar;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import muebles_y_tendencias_sulive.Conexion;
+
 /**
  *
  * @author ALEJANDRO
  */
 public class MetodoTipoPersonal {
-    
+
+    private Conexion cn;
+    private Connection conn;
+    private Statement stm;
+    private ResultSet rs;
+    PersonalGuardar pg;
+
+    public MetodoTipoPersonal() {
+
+    }
+
+//    public void getTipoPersonal() {
+//
+//        try {
+//            cn = new Conexion();
+//            conn = cn.getConnection();
+//            String sql = "SELECT * FROM  tipo_personal";
+//            PreparedStatement sqls = conn.prepareStatement(sql);
+//            rs = sqls.executeQuery();
+////            TipoPersonal tp = new TipoPersonal();
+//            while (rs.next()){
+//                TipoPersonal tp = new TipoPersonal();
+//                tp.setIdTipPer(rs.getInt("id_tipo_personal"));
+//                tp.setTipPer(rs.getString("tipo_personal"));
+//                
+//                pg.getCbxCargo().addItem(tp);
+//            }
+//
+//        } catch (SQLException e) {
+//        }
+//    }
 }

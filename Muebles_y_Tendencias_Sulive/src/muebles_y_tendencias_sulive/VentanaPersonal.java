@@ -33,11 +33,11 @@ public class VentanaPersonal extends JInternalFrame {
     
     private void configurarVentana() {
         this.setTitle("PERSONAL DE LA EMPRESA");
-        this.setSize(900, 700);
+        this.setSize(1920, 1080);
 //        this.setLocationRelativeTo(null);
 //        this.setLayout(null);    //no permite mostrar las pestanas, no se por que???
 
-        this.setLocation(400, 60);
+//        this.setLocation(400, 60);
         this.setClosable(true);
 //        this.setMaximizable(true);
         this.setResizable(false);

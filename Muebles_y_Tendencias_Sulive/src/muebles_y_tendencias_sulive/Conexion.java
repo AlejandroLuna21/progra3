@@ -9,6 +9,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
 
 /**
  *
@@ -19,7 +23,7 @@ public final class Conexion {
     private static Connection conn;
     private final String driver = "com.mysql.jdbc.Driver";
     private final String user = "root";
-    private final String password = "";
+    private final String password = "72749106";
     private final String url = "jdbc:mysql://localhost:3306/muebles_y_tendencias_sulive";
 
     private Statement stm;
@@ -32,14 +36,24 @@ public final class Conexion {
         conn = null;
         try {
             Class.forName(driver);
-            conn = DriverManager.getConnection(url, user, password);
+            try {
+                conn = DriverManager.getConnection(url, user, password);
+            } catch (SQLException ex) {
+                Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (ClassNotFoundException e) {
             System.out.println("Error al conectar" + e);
         }
     }
     public Connection getConnection(){
         return conn;
+    }
+    public void desconectar(){
+        conn= null;
+        if (conn== null){
+            System.out.println("Conexion terminada");
+        }
     }
 
 }

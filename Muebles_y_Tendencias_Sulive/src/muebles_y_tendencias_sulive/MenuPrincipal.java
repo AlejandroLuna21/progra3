@@ -48,7 +48,7 @@ public class MenuPrincipal extends JFrame implements ActionListener {
     private void configurarVentana() {
         this.setTitle("MUEBLES Y TENDENCIAS SULIVE");
 //        this.setFont(new Font( "Helvetica", Font.BOLD, 40));
-        this.setSize(1720, 880);
+        this.setSize(1920, 1080);
         this.setLocationRelativeTo(null);
         this.setLayout(null);
         this.setResizable(false);
@@ -66,6 +66,9 @@ public class MenuPrincipal extends JFrame implements ActionListener {
         mOpciones = new JMenu("Opciones");
 //        mOpciones.setIcon((Icon) new ImageIcon().getImage());
         miSalir = new JMenuItem("Salir");
+//        miSalir.setIcon(getResource("/Imagenes/tools.png")));
+
+
         miCerrarSecion = new JMenuItem("Cerrar Secion");
         mOpciones.add(miSalir);
         mOpciones.add(miCerrarSecion);

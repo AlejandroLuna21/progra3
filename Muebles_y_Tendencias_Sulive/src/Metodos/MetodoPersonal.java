@@ -28,7 +28,11 @@ public class MetodoPersonal {
 
         try {
 
-            PreparedStatement pst = conn.prepareStatement("INSERT INTO personal(id_personal,nombre,apellido_paterno,apellido_materno,fecha_nacimiento,ci,direccion,telefono,email,sueldo,fecha_inicio_actividades,fecha_fin_actividades,id_tipo_personal) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            PreparedStatement pst = conn.prepareStatement("INSERT INTO personal(id_personal,"
+                                                         + "nombre,apellido_paterno,apellido_materno,"
+                                                         + "fecha_nacimiento,ci,direccion,telefono,"
+                                                         + "email,sueldo,fecha_inicio_actividades,"
+                                                       + "id_tipo_personal) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
             pst.setInt(1, p.getIdPer());
             pst.setString(2, p.getNombre());
             pst.setString(3, p.getAp());
@@ -40,11 +44,14 @@ public class MetodoPersonal {
             pst.setString(9, p.getEmail());
             pst.setFloat(10, p.getSuel());
             pst.setString(11, p.getFI());
-            pst.setString(12, p.getFF());
-            pst.setInt(13, p.getIdTipPer());
+//            pst.setString(12, p.getFF());
+            pst.setInt(12, p.getIdTipPer());
             pst.executeUpdate();
+            
+            cn.desconectar();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "No se pudo guardar los datos"+e);
         }
+        
     }
 }

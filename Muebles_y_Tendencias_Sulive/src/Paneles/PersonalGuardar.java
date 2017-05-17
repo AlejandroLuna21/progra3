@@ -34,7 +34,7 @@ public class PersonalGuardar extends JPanel implements ActionListener {
 
     //  componentes de tipo JLabel en orden de aparicion
     private JLabel lblDPersonales;
-    private JLabel lblIdPersonal;
+//    private JLabel lblIdPersonal;
     private JLabel lblNombre;
     private JLabel lblApellidoPaterno;
     private JLabel lblApellidoMaterno;
@@ -53,7 +53,7 @@ public class PersonalGuardar extends JPanel implements ActionListener {
     private JLabel lblFechaInicio;
     private JLabel lblFechaFin;
 //  componentes de tipo JTextField en orden de aparicion
-    private JTextField txtIdPersonal;
+//    private JTextField txtIdPersonal;
     private JTextField txtNombre;
     private JTextField txtApellidoPaterno;
     private JTextField txtApellidoMaterno;
@@ -99,10 +99,10 @@ public class PersonalGuardar extends JPanel implements ActionListener {
         lblDPersonales.setText("DATOS PERSONALES:");
         lblDPersonales.setBounds(600, 20, 130, 25);
         this.add(lblDPersonales);
-        lblIdPersonal = new JLabel();
-        lblIdPersonal.setText("Id Personal:");
-        lblIdPersonal.setBounds(650, 45, 90, 25);
-        this.add(lblIdPersonal);
+//        lblIdPersonal = new JLabel();
+//        lblIdPersonal.setText("Id Personal:");
+//        lblIdPersonal.setBounds(650, 45, 90, 25);
+//        this.add(lblIdPersonal);
         lblNombre = new JLabel();
         lblNombre.setText("Nombre:");
         lblNombre.setBounds(650, 90, 90, 25);
@@ -168,9 +168,9 @@ public class PersonalGuardar extends JPanel implements ActionListener {
 //        lblFechaFin.setBounds(650, 550, 120, 25);
 //        this.add(lblFechaFin);
 //
-        txtIdPersonal = new JTextField();
-        txtIdPersonal.setBounds(800, 45, 200, 25);
-        this.add(txtIdPersonal);
+//        txtIdPersonal = new JTextField();
+//        txtIdPersonal.setBounds(800, 45, 200, 25);
+//        this.add(txtIdPersonal);
         txtNombre = new JTextField();
         txtNombre.setBounds(800, 90, 200, 25);
         this.add(txtNombre);
@@ -234,7 +234,7 @@ public class PersonalGuardar extends JPanel implements ActionListener {
     public void getDatos() {
         p1 = new Personal();
         mP1 = new MetodoPersonal();
-        p1.setIdPer(Integer.parseInt(txtIdPersonal.getText()));
+//        p1.setIdPer(Integer.parseInt(txtIdPersonal.getText()));
         p1.setNombre(txtNombre.getText());
         p1.setAp(txtApellidoPaterno.getText());
         p1.setAm(txtApellidoMaterno.getText());
@@ -281,7 +281,7 @@ public class PersonalGuardar extends JPanel implements ActionListener {
         }
     }
     public void clearComponentes(){
-    txtIdPersonal.setText("");
+//    txtIdPersonal.setText("");
     txtNombre.setText("");
     txtApellidoPaterno.setText("");
     txtApellidoMaterno.setText("");

@@ -28,30 +28,30 @@ public class MetodoPersonal {
 
         try {
 
-            PreparedStatement pst = conn.prepareStatement("INSERT INTO personal(id_personal,"
-                                                         + "nombre,apellido_paterno,apellido_materno,"
-                                                         + "fecha_nacimiento,ci,direccion,telefono,"
-                                                         + "email,sueldo,fecha_inicio_actividades,"
-                                                       + "id_tipo_personal) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
-            pst.setInt(1, p.getIdPer());
-            pst.setString(2, p.getNombre());
-            pst.setString(3, p.getAp());
-            pst.setString(4, p.getAm());
-            pst.setString(5, p.getFN());
-            pst.setString(6,p.getCi());
-            pst.setString(7,p.getDir());
-            pst.setInt(8, p.getTel());
-            pst.setString(9, p.getEmail());
-            pst.setFloat(10, p.getSuel());
-            pst.setString(11, p.getFI());
+            PreparedStatement pst = conn.prepareStatement("INSERT INTO personal("
+                    + "nombre,apellido_paterno,apellido_materno,"
+                    + "fecha_nacimiento,ci,direccion,telefono,"
+                    + "email,sueldo,fecha_inicio_actividades,"
+                    + "id_tipo_personal) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+//            pst.setInt(1, p.getIdPer());
+            pst.setString(1, p.getNombre());
+            pst.setString(2, p.getAp());
+            pst.setString(3, p.getAm());
+            pst.setString(4, p.getFN());
+            pst.setString(5, p.getCi());
+            pst.setString(6, p.getDir());
+            pst.setInt(7, p.getTel());
+            pst.setString(8, p.getEmail());
+            pst.setFloat(9, p.getSuel());
+            pst.setString(10, p.getFI());
 //            pst.setString(12, p.getFF());
-            pst.setInt(12, p.getIdTipPer());
+            pst.setInt(11, p.getIdTipPer());
             pst.executeUpdate();
-            
+
             cn.desconectar();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "No se pudo guardar los datos"+e);
+            JOptionPane.showMessageDialog(null, "No se pudo guardar los datos" + e);
         }
-        
+
     }
 }

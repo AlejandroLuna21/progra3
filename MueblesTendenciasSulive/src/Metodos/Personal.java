@@ -5,6 +5,9 @@
  */
 package Metodos;
 
+import Paneles.PersonalEliminar;
+import Paneles.PersonalModificar;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -25,9 +28,15 @@ public class Personal {
     private String fechaInicioActividades;
     private String fechaFinActividades;
     private int idTipoPersonal;
+    private String nameCom;
+
+    //Implementacion del mvc
+    private PersonalModificar pm;
+    private MetodoPersonal mpm;
+    private PersonalEliminar pe;
 
     public Personal() {
-
+        inicializar();
     }
 
     public void setIdPer(int idPer) {
@@ -133,4 +142,32 @@ public class Personal {
     public int getIdTipPer() {
         return this.idTipoPersonal;
     }
+
+    public void setNameCom(String NameCom) {
+        this.nameCom = NameCom;
+    }
+
+    public String getNameCom() {
+        return this.nameCom;
+    }
+
+    private void inicializar() {
+        pm = new PersonalModificar();
+        mpm = new MetodoPersonal();
+    }
+
+    public void mostrarDatosAList() {
+        mpm.mostrarDatos(pm.lLista);
+    }
+
+    public void mostrarArrayList() {
+        DefaultListModel modelo = new DefaultListModel();
+        modelo.addElement(mpm.mostrarelim());
+        pm.lLista.setModel(modelo);
+    }
+
+//    public void mostrarDatos() {
+//       pe.tabla.setModel(mpm.ObtenerDatos());        
+//    }
+
 }

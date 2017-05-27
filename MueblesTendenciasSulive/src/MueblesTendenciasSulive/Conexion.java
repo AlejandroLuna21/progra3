@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package muebles_y_tendencias_sulive;
+package MueblesTendenciasSulive;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -33,7 +33,7 @@ public final class Conexion {
     }
 
     private void establecerConexion() {
-        conn = null;
+        conn =null;
         try {
             Class.forName(driver);
             try {
@@ -50,10 +50,15 @@ public final class Conexion {
         return conn;
     }
     public void desconectar(){
-        conn= null;
-        if (conn== null){
-            System.out.println("Conexion terminada");
-        }
+        try {
+                conn.close();
+            } catch (SQLException e) {
+            }
+        
+//        conn= null;
+//        if (conn== null){
+//            System.out.println("Conexion terminada");
+//        }
     }
 
 }

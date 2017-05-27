@@ -24,7 +24,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import muebles_y_tendencias_sulive.Conexion;
+import MueblesTendenciasSulive.Conexion;
+import MueblesTendenciasSulive.VentanaPersonal;
 
 /**
  *
@@ -77,7 +78,9 @@ public class PersonalGuardar extends JPanel implements ActionListener {
 
     private Personal p1;
     private MetodoPersonal mP1;
-
+    private PersonalModificar pm;
+    private PersonalEliminar pe;
+    private VentanaPersonal p;
     private int anio;
     private int mes;
     private int dia;
@@ -99,10 +102,6 @@ public class PersonalGuardar extends JPanel implements ActionListener {
         lblDPersonales.setText("DATOS PERSONALES:");
         lblDPersonales.setBounds(600, 20, 130, 25);
         this.add(lblDPersonales);
-//        lblIdPersonal = new JLabel();
-//        lblIdPersonal.setText("Id Personal:");
-//        lblIdPersonal.setBounds(650, 45, 90, 25);
-//        this.add(lblIdPersonal);
         lblNombre = new JLabel();
         lblNombre.setText("Nombre:");
         lblNombre.setBounds(650, 90, 90, 25);
@@ -164,13 +163,7 @@ public class PersonalGuardar extends JPanel implements ActionListener {
         lblFechaInicio.setBounds(650, 665, 120, 25);
         this.add(lblFechaInicio);
         lblFechaFin = new JLabel();
-//        lblFechaFin.setText("Fin de Actividades:");
-//        lblFechaFin.setBounds(650, 550, 120, 25);
-//        this.add(lblFechaFin);
-//
-//        txtIdPersonal = new JTextField();
-//        txtIdPersonal.setBounds(800, 45, 200, 25);
-//        this.add(txtIdPersonal);
+
         txtNombre = new JTextField();
         txtNombre.setBounds(800, 90, 200, 25);
         this.add(txtNombre);
@@ -257,7 +250,7 @@ public class PersonalGuardar extends JPanel implements ActionListener {
 //        p1.setFF(anio + "-" + (mes + 1) + "-" + dia);
         p1.setIdTipPer((cbxCargo.getSelectedIndex() + 1));//Pendiente
         try {
-            mP1.setDate(p1);
+            mP1.guardarDate(p1);
             JOptionPane.showMessageDialog(null, "Se Guardo Correctamente los Datos");
         } catch (HeadlessException e) {
             JOptionPane.showMessageDialog(null, "No se pudo guardar los datos" + e);
@@ -271,30 +264,31 @@ public class PersonalGuardar extends JPanel implements ActionListener {
             Connection conn = cn.getConnection();
             Statement stm = conn.createStatement();
             ResultSet rs = stm.executeQuery("SELECT * FROM tipo_personal");
-            while(rs.next()){
-                
+            while (rs.next()) {
+
                 cbxCargo.addItem(rs.getString(2));
             }
-            
+
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error" + e);
         }
     }
-    public void clearComponentes(){
+
+    public void clearComponentes() {
 //    txtIdPersonal.setText("");
-    txtNombre.setText("");
-    txtApellidoPaterno.setText("");
-    txtApellidoMaterno.setText("");
-    dcNacimiento.setCalendar(null);
-    txtCi.setText("");
-    txtAoC.setText("");
-    txtAoCC.setText("");
-    txtND.setText("");
-    txtTelefono.setText("");
-    txtEmail.setText("");
-    cbxCargo.setSelectedItem(null);
-    txtSueldo.setText("");
-    dcInicio.setCalendar(null);
+        txtNombre.setText("");
+        txtApellidoPaterno.setText("");
+        txtApellidoMaterno.setText("");
+        dcNacimiento.setCalendar(null);
+        txtCi.setText("");
+        txtAoC.setText("");
+        txtAoCC.setText("");
+        txtND.setText("");
+        txtTelefono.setText("");
+        txtEmail.setText("");
+        cbxCargo.setSelectedItem(null);
+        txtSueldo.setText("");
+        dcInicio.setCalendar(null);
     }
 
     @Override
@@ -302,9 +296,21 @@ public class PersonalGuardar extends JPanel implements ActionListener {
         if (ae.getSource() == btnGuardar) {
             getDatos();
             clearComponentes();
+            pe = new PersonalEliminar();
+            pe.actualizarTabla();
+//            pe.mostrarDatos();
+//            pe.removeAll();
+//            pe.show();
+//            p.updateUI();
+//            pe.updateUI();
+//            pe.update(grphcs);
+//            pe.modelo.fireTableChanged
+
         }
-        if (ae.getSource() == btnCancelar){
-            clearComponentes();
+        if (ae.getSource() == btnCancelar) {
+//            clearComponentes();
+            pe = new PersonalEliminar();
+            pe.actualizarTabla();
         }
     }
 }

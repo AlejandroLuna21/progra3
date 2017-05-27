@@ -7,11 +7,9 @@ package Metodos;
 
 import Paneles.PersonalGuardar;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
-import muebles_y_tendencias_sulive.Conexion;
+import MueblesTendenciasSulive.Conexion;
 
 /**
  *
